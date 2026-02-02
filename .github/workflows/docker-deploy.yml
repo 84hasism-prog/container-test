@@ -20,12 +20,12 @@ jobs:
 
       - name: Build and Push Container
         run: |
-          gcloud builds submit --tag europe-north1-docker.pkg.dev/${{ vars.PROJECT_ID }}/hello-repo/flask-app:${{ github.sha }} .
+          gcloud builds submit --tag europe-north1-docker.pkg.dev/flask-deploy-2026/hello-repo/flask-app:${{ github.sha }} .
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: hello-flask
-          image: europe-north1-docker.pkg.dev/${{ vars.PROJECT_ID }}/hello-repo/flask-app:${{ github.sha }}
+          image: europe-north1-docker.pkg.dev/flask-deploy-2026/hello-repo/flask-app:${{ github.sha }}
           region: europe-north1
           flags: '--allow-unauthenticated'
